@@ -8,7 +8,7 @@ public class Registradora {
 
           terceiroBug();
 //
-//        quartoBug();
+          quartoBug();
 //
 //        quintoBug();
 //
