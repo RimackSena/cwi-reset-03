@@ -8,4 +8,7 @@ public class Ator extends Pessoa{
         super(nome, idade, genero);
         this.numerosDeOscars = numerosDeOscars;
     }
+    public String getNome(){
+        return super.getNome() ;
+    }
 }
