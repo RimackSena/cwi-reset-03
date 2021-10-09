@@ -2,9 +2,9 @@ public class Aplicacao {
 
     public static void main(String[] args) {
 
-        Diretor diretor1 = new Diretor("Rimack", 25,01, Genero.MASCULINO);
-        Diretor diretor2 = new Diretor("Sena", 30,04, Genero.MASCULINO);
-        Ator ator1 = new Ator("Ronaldo",33,3,Genero.MASCULINO);
+        Diretor diretor1 = new Diretor("Rimack", 25, Genero.MASCULINO, 5);
+        Diretor diretor2 = new Diretor("Sena", 30, Genero.MASCULINO, 4);
+        Ator ator1 = new Ator("Ronaldo",33,Genero.MASCULINO, 3);
 
         Filme filme1 = new Filme(diretor1, "filme1",
                 "filme sobre orientação a objeto", 90, 2021, 5);
@@ -12,7 +12,7 @@ public class Aplicacao {
         Filme filme2 = new Filme(diretor2, "filme2",
                 "filme sobre banco de dados", 60, 2019, 4);
 
-        
+
         filme1.reproduzir();
 
         System.out.println("-----------------");
@@ -21,10 +21,14 @@ public class Aplicacao {
 
         System.out.println("-----------------");
 
-        diretor1.imprimirdiretor();
+       // diretor1.imprimirdiretor();
+
+       // System.out.println("-----------------");
+
+       // ator1.imprimirAtor();
 
         System.out.println("-----------------");
 
-        ator1.imprimirAtor();
+        diretor1.imprimirAtributos();
     }
 }

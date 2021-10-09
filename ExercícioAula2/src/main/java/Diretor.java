@@ -1,25 +1,17 @@
-public class Diretor {
+public class Diretor extends Pessoa{
 
-    private String nomeDiretor;
-    private int idade;
+
+
     private int quantidadeDeFilmesDirigidos;
-    private Genero genero;
 
-    public Diretor(String nomeDiretor, int idade, int quantidadeDeFilmesDirigidos, Genero genero) {
-        this.genero = genero;
-        this.nomeDiretor = nomeDiretor;
-        this.idade = idade;
+
+    public Diretor(String nome, int idade, Genero genero, int quantidadeDeFilmesDirigidos) {
+        super(nome, idade, genero);
         this.quantidadeDeFilmesDirigidos = quantidadeDeFilmesDirigidos;
     }
 
-    public String getNome() {
-
-        return nomeDiretor;
+    public String getNome(){
+        return super.getNome() ;
     }
 
-    public void imprimirdiretor(){
-        System.out.println(this.nomeDiretor);
-        System.out.println(this.idade);
-        System.out.println(genero.getDescricao());
-    }
 }

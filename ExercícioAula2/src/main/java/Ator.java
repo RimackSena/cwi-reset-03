@@ -1,21 +1,11 @@
-public class Ator {
+public class Ator extends Pessoa{
 
-    private String nomeAtor;
-    private int idadeAtor;
+
     private int numerosDeOscars;
-    private Genero genero;
 
-    public Ator(String nomeAtor, int idadeAtor, int numerosDeOscars, Genero genero) {
-        this.nomeAtor = nomeAtor;
-        this.idadeAtor = idadeAtor;
+
+    public Ator(String nome, int idade, Genero genero, int numerosDeOscars) {
+        super(nome, idade, genero);
         this.numerosDeOscars = numerosDeOscars;
-        this.genero = genero;
     }
-
-    public void imprimirAtor(){
-        System.out.println(this.nomeAtor);
-        System.out.println(this.idadeAtor);
-        System.out.println(genero.getDescricao());
-    }
-
 }
