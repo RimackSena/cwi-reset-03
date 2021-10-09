@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Diretor extends Pessoa{
 
 
@@ -5,8 +7,8 @@ public class Diretor extends Pessoa{
     private int quantidadeDeFilmesDirigidos;
 
 
-    public Diretor(String nome, int idade, Genero genero, int quantidadeDeFilmesDirigidos) {
-        super(nome, idade, genero);
+    public Diretor(String nome, LocalDate dataNascimento, Genero genero, int quantidadeDeFilmesDirigidos) {
+        super(nome, dataNascimento, genero);
         this.quantidadeDeFilmesDirigidos = quantidadeDeFilmesDirigidos;
     }
 

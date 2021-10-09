@@ -7,13 +7,18 @@ public class Filme {
     private int anoLancamento;
     private int notaAvaliacao;
 
-    public Filme(Diretor diretorFilme, String nomeFilme, String descricaoFilme, int duracaoEmMinutos, int anoLancamento, int notaAvaliacao) {
+    public Filme(Diretor diretorFilme, String nomeFilme, String descricaoFilme, int duracaoEmMinutos, int anoLancamento, int notaAvaliacao) throws AvaliacaoForaDoPadraoException {
         this.diretorFilme = diretorFilme;
         this.nomeFilme = nomeFilme;
         this.descricaoFilme = descricaoFilme;
         this.duracaoEmMinutos = duracaoEmMinutos;
         this.anoLancamento = anoLancamento;
-        this.notaAvaliacao = notaAvaliacao;
+        if (notaAvaliacao > 0 & notaAvaliacao <= 5){
+            this.notaAvaliacao = notaAvaliacao;
+        } else {
+            throw new AvaliacaoForaDoPadraoException();
+        }
+
     }
 
     public void reproduzir(){
@@ -22,5 +27,4 @@ public class Filme {
         System.out.println(this.duracaoEmMinutos + " minutos");
         System.out.println("Diretor do filme: " + diretorFilme.getNome());
     }
-
 }
