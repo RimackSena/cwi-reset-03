@@ -5,23 +5,35 @@ import java.util.List;
 
 public class FakeDatabase {
 
-    private List<Ator> atores = new ArrayList<>();
-    private List<Diretor> diretores = new ArrayList<>();
+    private List<AtorRequest> atores = new ArrayList<>();
+    private List<DiretorRequest> diretores = new ArrayList<>();
 
 
-    public void persisteAtor(Ator ator) {
+    public void persisteAtor(AtorRequest ator) {
         atores.add(ator);
     }
 
-    public List<Ator> recuperaAtores() {
+    public List<AtorRequest> recuperaAtores() {
         return atores;
     }
 
-    public void persisteDiretor(Diretor diretor) {
+    public void persisteDiretor(DiretorRequest diretor) {
         diretores.add(diretor);
     }
 
-    public List<Diretor> recuperaDiretores() {
+    public List<DiretorRequest> recuperaDiretores() {
         return diretores;
+    }
+
+    public int gerarIdDiretor() {
+        int id = diretores.size();
+        int idsomado = id + 1;
+        return idsomado;
+    }
+
+    public int gerarIdAtor() {
+        int id = atores.size();
+        int idsomado = id + 1;
+        return idsomado;
     }
 }

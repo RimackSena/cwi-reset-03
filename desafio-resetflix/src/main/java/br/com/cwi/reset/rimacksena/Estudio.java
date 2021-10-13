@@ -2,7 +2,7 @@ package br.com.cwi.reset.rimacksena;
 
 import java.time.LocalDate;
 
-public class Estudio extends IDeNome{
+public class Estudio extends Nome {
 
     private String descricao;
     private LocalDate dataCriacao;
