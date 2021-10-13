@@ -14,4 +14,12 @@ public class AtorRequest extends Datas{
         this.fakeDatabase = fakeDatabase;
         this.id = fakeDatabase.gerarIdAtor();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public StatusAtividade getStatusCarreira() {
+        return statusCarreira;
+    }
 }

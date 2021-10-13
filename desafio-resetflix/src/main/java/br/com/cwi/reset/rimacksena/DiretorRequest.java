@@ -17,7 +17,4 @@ public class DiretorRequest extends Datas {
         return this.id;
     }
 
-    public FakeDatabase getFakeDatabase() {
-        return fakeDatabase;
-    }
 }

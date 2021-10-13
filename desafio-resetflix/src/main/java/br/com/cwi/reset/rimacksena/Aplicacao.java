@@ -5,21 +5,22 @@ import java.util.List;
 
 public class Aplicacao {
 
-    public static void main(String[] args) throws NenhumDiretorEncontradoExeption, DiretorNaoEncontradoExeption, IdDiretorNaoInformadoExcepition, NenhumDiretorEncontradoComEsseIdExeption, CampoObrigatorioExepition, DataNascimentoInvalidoExcepition, NomeESobrenomeException, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition {
-
+    public static void main(String[] args) throws DataNascimentoInvalidoExcepition, NomeESobrenomeException, CampoObrigatorioExepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition {
         FakeDatabase fakeDatabase = new FakeDatabase();
 
-        DiretorService diretorService = new DiretorService(fakeDatabase);
+        AtorService atorService = new AtorService(fakeDatabase);
 
-        DiretorRequest diretorRequest = new DiretorRequest(fakeDatabase,"Rimack Sena",LocalDate.of(1996,01,01),2000);
-        diretorService.criarDiretor(diretorRequest);
+        String nome = "Will Smith";
+        LocalDate dataNascimento = LocalDate.of(1968, 9, 25);
+        StatusAtividade statusAtividade = StatusAtividade.EM_ATIVIDADE;
+        Integer anoInicioAtividade = 1986;
+        AtorRequest atorRequest = new AtorRequest(fakeDatabase,nome,dataNascimento,anoInicioAtividade,statusAtividade);
 
-       // DiretorRequest diretorRequest01 = new DiretorRequest(fakeDatabase,"Rimack Sena",LocalDate.of(1996,01,01),2000);
-       // diretorService.criarDiretor(diretorRequest01);
+        atorService.criarAtor(atorRequest);
 
-        DiretorRequest diretor = diretorService.consultarDiretor(1);
+        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
 
-        System.out.println(diretor.getNome());
-        System.out.println(diretor.getId());
+        System.out.println("Deve conter 1 ator, quantidade encontrada: " + atores.size());
+        System.out.println("Primeiro ator deve ser 'Will Smith', valor encontrado: " + atores.get(0).getNome());
     }
 }

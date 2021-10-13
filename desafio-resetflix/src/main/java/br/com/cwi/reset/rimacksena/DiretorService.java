@@ -56,11 +56,11 @@ public class DiretorService {
         return diretoresRetornar;
     }
 
-    public DiretorRequest consultarDiretor(int id) throws IdDiretorNaoInformadoExcepition, NenhumDiretorEncontradoComEsseIdExeption {
+    public DiretorRequest consultarDiretor(int id) throws IdNaoInformadoExcepition, NenhumDiretorEncontradoComEsseIdExeption {
         List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
         DiretorRequest diretorRetornar = null;
         if (id < 1) {
-            throw new IdDiretorNaoInformadoExcepition();
+            throw new IdNaoInformadoExcepition();
         } else {
             for (DiretorRequest diretor : diretores) {
                 if (id == diretor.getId()) {
