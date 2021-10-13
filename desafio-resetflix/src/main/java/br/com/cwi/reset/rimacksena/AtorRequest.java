@@ -2,7 +2,7 @@ package br.com.cwi.reset.rimacksena;
 
 import java.time.LocalDate;
 
-public class AtorRequest extends Datas{
+public class AtorRequest extends Pessoas {
 
     private int id;
     private StatusAtividade statusCarreira;

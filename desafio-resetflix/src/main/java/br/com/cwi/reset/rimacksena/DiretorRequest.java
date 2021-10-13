@@ -2,7 +2,7 @@ package br.com.cwi.reset.rimacksena;
 
 import java.time.LocalDate;
 
-public class DiretorRequest extends Datas {
+public class DiretorRequest extends Pessoas {
 
     private int id;
     private FakeDatabase fakeDatabase;

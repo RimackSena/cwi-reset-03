@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
 public class DiretorService {
 
     private FakeDatabase fakeDatabase;
@@ -15,9 +18,9 @@ public class DiretorService {
     public void criarDiretor(DiretorRequest diretor) throws CampoObrigatorioExepition, NomeESobrenomeException, DataNascimentoInvalidoExcepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition {
         String regex = "[A-Z][a-z]* [A-Z][a-z]*";
         List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
-        if (diretor.getNome() == null ){
+        if (isNull(diretor.getNome())){
             throw new CampoObrigatorioExepition();
-        }if (diretor.getDataNascimento() == null){
+        }if (isNull(diretor.getDataNascimento())){
             throw new CampoObrigatorioExepition();
         }if (diretor.getAnoInicioAtividade() == 0){
             throw new CampoObrigatorioExepition();
@@ -38,12 +41,12 @@ public class DiretorService {
     public List<DiretorRequest> listarDiretores(String name) throws DiretorNaoEncontradoExeption, NenhumDiretorEncontradoExeption {
         List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
         List<DiretorRequest> diretoresRetornar = new ArrayList<>();
-        if (name == null) {
+        if (isNull(name)) {
             if (diretores.size() == 0) {
                 throw new NenhumDiretorEncontradoExeption();
             } else return diretores;
         }
-        if (name != null) {
+        if (nonNull(name)) {
             for (DiretorRequest diretor : diretores) {
                 if (name.equals(diretor.getNome())) {
                     diretoresRetornar.add(diretor);
@@ -67,7 +70,7 @@ public class DiretorService {
                     diretorRetornar = diretor;
                 }
             }
-            if (diretorRetornar != null) {
+            if (nonNull(diretorRetornar)) {
                 return diretorRetornar;
             } else {
                 throw new NenhumDiretorEncontradoComEsseIdExeption();

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Aplicacao {
 
-    public static void main(String[] args) throws DataNascimentoInvalidoExcepition, NomeESobrenomeException, CampoObrigatorioExepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition {
+    public static void main(String[] args) throws DataNascimentoInvalidoExcepition, NomeESobrenomeException, CampoObrigatorioExepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition, AtorJaCadastradoExcepition {
         FakeDatabase fakeDatabase = new FakeDatabase();
 
         AtorService atorService = new AtorService(fakeDatabase);
