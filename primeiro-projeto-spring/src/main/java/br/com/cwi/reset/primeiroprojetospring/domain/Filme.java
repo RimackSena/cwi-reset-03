@@ -33,4 +33,24 @@ public class Filme {
     public String getNomeFilme() {
         return nomeFilme;
     }
+
+    public Diretor getDiretorFilme() {
+        return diretorFilme;
+    }
+
+    public String getDescricaoFilme() {
+        return descricaoFilme;
+    }
+
+    public int getDuracaoEmMinutos() {
+        return duracaoEmMinutos;
+    }
+
+    public int getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public int getNotaAvaliacao() {
+        return notaAvaliacao;
+    }
 }

@@ -15,10 +15,10 @@ import java.time.LocalDate;
 public class FilmeController {
 
     @GetMapping
-    public String getFilme(){
+    public Filme getFilme(){
         Diretor diretor = new Diretor("Rimack Sena", LocalDate.of(1996,01,01), Genero.MASCULINO, 2);
         Filme filme1 = new Filme(diretor,"Circulo de fogo","Filme muito bom",96,2000,4);
-        return filme1.getNomeFilme();
+        return filme1;
     }
 
 
