@@ -1,6 +1,10 @@
+package br.com.cwi.reset.primeiroprojetospring.domain;
+
+import br.com.cwi.reset.primeiroprojetospring.domain.Pessoa;
+
 import java.time.LocalDate;
 
-public class Diretor extends Pessoa{
+public class Diretor extends Pessoa {
 
 
 

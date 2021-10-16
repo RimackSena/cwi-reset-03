@@ -1,3 +1,5 @@
+package br.com.cwi.reset.primeiroprojetospring.domain;
+
 import java.time.LocalDate;
 import java.time.Period;
 
