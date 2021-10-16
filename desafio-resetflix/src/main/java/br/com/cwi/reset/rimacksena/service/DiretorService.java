@@ -1,4 +1,8 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.service;
+
+import br.com.cwi.reset.rimacksena.FakeDatabase;
+import br.com.cwi.reset.rimacksena.exceptions.*;
+import br.com.cwi.reset.rimacksena.request.DiretorRequest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,24 +19,24 @@ public class DiretorService {
         this.fakeDatabase = fakeDatabase;
     }
 
-    public void criarDiretor(DiretorRequest diretor) throws CampoObrigatorioExepition, NomeESobrenomeException, DataNascimentoInvalidoExcepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition {
+    public void criarDiretor(DiretorRequest diretor) throws CampoObrigatorioExeption, NomeESobrenomeException, DataNascimentoInvalidoException, DataInicioAtividadeInvalidaException, DiretorJaCadastradoException {
         String regex = "[A-Z][a-z]* [A-Z][a-z]*";
         List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
         if (isNull(diretor.getNome())){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (isNull(diretor.getDataNascimento())){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (diretor.getAnoInicioAtividade() == 0){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (!diretor.getNome().matches(regex)){
             throw new NomeESobrenomeException();
         }if (diretor.getDataNascimento().isAfter(LocalDate.now())){
-            throw new DataNascimentoInvalidoExcepition();
+            throw new DataNascimentoInvalidoException();
         }if (diretor.getDataNascimento().getYear() > diretor.getAnoInicioAtividade()){
-            throw new DataInicioAtividadeInvalidaExcepition();
+            throw new DataInicioAtividadeInvalidaException();
         } for (DiretorRequest diretor1 : diretores) {
             if (diretor.getNome().equals(diretor1.getNome())){
-                throw new DiretorJaCadastradoExcepition();
+                throw new DiretorJaCadastradoException();
             }
         }
         fakeDatabase.persisteDiretor(diretor);
@@ -59,11 +63,11 @@ public class DiretorService {
         return diretoresRetornar;
     }
 
-    public DiretorRequest consultarDiretor(int id) throws IdNaoInformadoExcepition, NenhumDiretorEncontradoComEsseIdExeption {
+    public DiretorRequest consultarDiretor(int id) throws IdNaoInformadoException, NenhumDiretorEncontradoComEsseIdExeption {
         List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
         DiretorRequest diretorRetornar = null;
         if (id < 1) {
-            throw new IdNaoInformadoExcepition();
+            throw new IdNaoInformadoException();
         } else {
             for (DiretorRequest diretor : diretores) {
                 if (id == diretor.getId()) {

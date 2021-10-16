@@ -25,6 +25,14 @@ public class Pessoa {
         return nome;
     }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
     private Integer calcularIdade() {
         return Period.between(dataNascimento, LocalDate.now()).getYears();
     }

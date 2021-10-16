@@ -1,5 +1,8 @@
 package br.com.cwi.reset.rimacksena;
 
+import br.com.cwi.reset.rimacksena.enuns.Genero;
+import br.com.cwi.reset.rimacksena.request.DiretorRequest;
+
 import java.util.List;
 
 public class Filme {

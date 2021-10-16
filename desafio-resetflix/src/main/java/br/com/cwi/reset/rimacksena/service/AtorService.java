@@ -1,4 +1,9 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.service;
+
+import br.com.cwi.reset.rimacksena.FakeDatabase;
+import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
+import br.com.cwi.reset.rimacksena.exceptions.*;
+import br.com.cwi.reset.rimacksena.request.AtorRequest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,26 +20,26 @@ public class AtorService {
         this.fakeDatabase = fakeDatabase;
     }
 
-    public void criarAtor(AtorRequest ator) throws CampoObrigatorioExepition, NomeESobrenomeException, DataNascimentoInvalidoExcepition, DataInicioAtividadeInvalidaExcepition, AtorJaCadastradoExcepition {
+    public void criarAtor(AtorRequest ator) throws CampoObrigatorioExeption, NomeESobrenomeException, DataNascimentoInvalidoException, DataInicioAtividadeInvalidaException, AtorJaCadastradoException {
         String regex = "[A-Z][a-z]* [A-Z][a-z]*";
         List<AtorRequest> atores = fakeDatabase.recuperaAtores();
         if (isNull(ator.getNome())){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (isNull(ator.getDataNascimento())){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (isNull(ator.getStatusCarreira())) {
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (ator.getAnoInicioAtividade() == 0){
-            throw new CampoObrigatorioExepition();
+            throw new CampoObrigatorioExeption();
         }if (!ator.getNome().matches(regex)){
             throw new NomeESobrenomeException();
         }if (ator.getDataNascimento().isAfter(LocalDate.now())){
-            throw new DataNascimentoInvalidoExcepition();
+            throw new DataNascimentoInvalidoException();
         }if (ator.getDataNascimento().getYear() > ator.getAnoInicioAtividade()){
-            throw new DataInicioAtividadeInvalidaExcepition();
+            throw new DataInicioAtividadeInvalidaException();
         }for (AtorRequest ator1 : atores) {
             if (ator.getNome().equals(ator1.getNome())){
-                throw new AtorJaCadastradoExcepition();
+                throw new AtorJaCadastradoException();
             }
         }
         fakeDatabase.persisteAtor(ator);
@@ -65,11 +70,11 @@ public class AtorService {
         return atoresRetornarFiltro;
     }
 
-    public AtorRequest consultarAtor(int id) throws IdNaoInformadoExcepition, NenhumAtorEncontradoComEsseIdExeption {
+    public AtorRequest consultarAtor(int id) throws IdNaoInformadoException, NenhumAtorEncontradoComEsseIdExeption {
         List<AtorRequest> atores = fakeDatabase.recuperaAtores();
         AtorRequest atorRetornar = null;
         if (id < 1) {
-            throw new IdNaoInformadoExcepition();
+            throw new IdNaoInformadoException();
         } else {
             for (AtorRequest ator : atores) {
                 if (id == ator.getId()) {

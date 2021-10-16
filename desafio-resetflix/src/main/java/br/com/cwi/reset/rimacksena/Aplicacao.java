@@ -1,11 +1,16 @@
 package br.com.cwi.reset.rimacksena;
 
+import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
+import br.com.cwi.reset.rimacksena.exceptions.*;
+import br.com.cwi.reset.rimacksena.request.AtorRequest;
+import br.com.cwi.reset.rimacksena.service.AtorService;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class Aplicacao {
 
-    public static void main(String[] args) throws DataNascimentoInvalidoExcepition, NomeESobrenomeException, CampoObrigatorioExepition, DataInicioAtividadeInvalidaExcepition, DiretorJaCadastradoExcepition, AtorJaCadastradoExcepition {
+    public static void main(String[] args) throws DataNascimentoInvalidoException, NomeESobrenomeException, CampoObrigatorioExeption, DataInicioAtividadeInvalidaException, DiretorJaCadastradoException, AtorJaCadastradoException {
         FakeDatabase fakeDatabase = new FakeDatabase();
 
         AtorService atorService = new AtorService(fakeDatabase);

@@ -1,5 +1,8 @@
 package br.com.cwi.reset.rimacksena;
 
+import br.com.cwi.reset.rimacksena.enuns.TipoAtuacao;
+import br.com.cwi.reset.rimacksena.request.AtorRequest;
+
 public class PersonagemAtor {
 
     private String nome;

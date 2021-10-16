@@ -1,4 +1,7 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.request;
+
+import br.com.cwi.reset.rimacksena.FakeDatabase;
+import br.com.cwi.reset.rimacksena.Pessoas;
 
 import java.time.LocalDate;
 

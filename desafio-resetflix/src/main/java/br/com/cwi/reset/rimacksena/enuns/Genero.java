@@ -1,4 +1,4 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.enuns;
 
 public enum Genero {
 

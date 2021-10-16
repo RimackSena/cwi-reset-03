@@ -1,4 +1,4 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.exceptions;
 
 public class AtorNaoEncontradoExeption extends Throwable {
 

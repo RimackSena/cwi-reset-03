@@ -7,7 +7,6 @@ import java.time.LocalDate;
 public class Diretor extends Pessoa {
 
 
-
     private int quantidadeDeFilmesDirigidos;
 
 

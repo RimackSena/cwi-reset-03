@@ -1,5 +1,7 @@
 package br.com.cwi.reset.rimacksena;
 
+import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
+
 import java.time.LocalDate;
 
 public class Estudio {

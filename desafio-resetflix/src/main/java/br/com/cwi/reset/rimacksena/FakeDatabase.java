@@ -1,5 +1,8 @@
 package br.com.cwi.reset.rimacksena;
 
+import br.com.cwi.reset.rimacksena.request.AtorRequest;
+import br.com.cwi.reset.rimacksena.request.DiretorRequest;
+
 import java.util.ArrayList;
 import java.util.List;
 

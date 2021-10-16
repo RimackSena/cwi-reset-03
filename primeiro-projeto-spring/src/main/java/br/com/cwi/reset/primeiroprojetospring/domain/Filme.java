@@ -2,12 +2,13 @@ package br.com.cwi.reset.primeiroprojetospring.domain;
 
 public class Filme {
 
-    private Diretor diretorFilme;
+
     private String nomeFilme;
     private String descricaoFilme;
     private int duracaoEmMinutos;
     private int anoLancamento;
     private int notaAvaliacao;
+    private Diretor diretorFilme;
 
     public Filme(Diretor diretorFilme, String nomeFilme, String descricaoFilme, int duracaoEmMinutos, int anoLancamento, int notaAvaliacao) {
         this.diretorFilme = diretorFilme;
