@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Aplicacao {
 
-    public static void main(String[] args) throws DataNascimentoInvalidoException, NomeESobrenomeException, CampoObrigatorioExeption, DataInicioAtividadeInvalidaException, DiretorJaCadastradoException, AtorJaCadastradoException {
+    public static void main(String[] args) throws DataNascimentoInvalidoException, NomeESobrenomeException, AtorJaCadastradoException, CampoObrigatorioExeption, DataInicioAtividadeInvalidaException {
         FakeDatabase fakeDatabase = new FakeDatabase();
 
         AtorService atorService = new AtorService(fakeDatabase);
@@ -23,7 +23,7 @@ public class Aplicacao {
 
         atorService.criarAtor(atorRequest);
 
-        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
+        List<Ator> atores = fakeDatabase.recuperaAtores();
 
         System.out.println("Deve conter 1 ator, quantidade encontrada: " + atores.size());
         System.out.println("Primeiro ator deve ser 'Will Smith', valor encontrado: " + atores.get(0).getNome());

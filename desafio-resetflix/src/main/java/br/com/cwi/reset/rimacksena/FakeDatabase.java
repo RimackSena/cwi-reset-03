@@ -8,23 +8,23 @@ import java.util.List;
 
 public class FakeDatabase {
 
-    private List<AtorRequest> atores = new ArrayList<>();
-    private List<DiretorRequest> diretores = new ArrayList<>();
+    private List<Ator> atores = new ArrayList<>();
+    private List<Diretor> diretores = new ArrayList<>();
 
 
-    public void persisteAtor(AtorRequest ator) {
+    public void persisteAtor(Ator ator) {
         atores.add(ator);
     }
 
-    public List<AtorRequest> recuperaAtores() {
+    public List<Ator> recuperaAtores() {
         return atores;
     }
 
-    public void persisteDiretor(DiretorRequest diretor) {
+    public void persisteDiretor(Diretor diretor) {
         diretores.add(diretor);
     }
 
-    public List<DiretorRequest> recuperaDiretores() {
+    public List<Diretor> recuperaDiretores() {
         return diretores;
     }
 

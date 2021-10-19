@@ -1,5 +1,6 @@
 package br.com.cwi.reset.rimacksena.service;
 
+import br.com.cwi.reset.rimacksena.Diretor;
 import br.com.cwi.reset.rimacksena.FakeDatabase;
 import br.com.cwi.reset.rimacksena.exceptions.*;
 import br.com.cwi.reset.rimacksena.request.DiretorRequest;
@@ -21,7 +22,7 @@ public class DiretorService {
 
     public void criarDiretor(DiretorRequest diretor) throws CampoObrigatorioExeption, NomeESobrenomeException, DataNascimentoInvalidoException, DataInicioAtividadeInvalidaException, DiretorJaCadastradoException {
         String regex = "[A-Z][a-z]* [A-Z][a-z]*";
-        List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
+        List<Diretor> diretores = fakeDatabase.recuperaDiretores();
         if (isNull(diretor.getNome())){
             throw new CampoObrigatorioExeption();
         }if (isNull(diretor.getDataNascimento())){
@@ -34,24 +35,26 @@ public class DiretorService {
             throw new DataNascimentoInvalidoException();
         }if (diretor.getDataNascimento().getYear() > diretor.getAnoInicioAtividade()){
             throw new DataInicioAtividadeInvalidaException();
-        } for (DiretorRequest diretor1 : diretores) {
+        } for (Diretor diretor1 : diretores) {
             if (diretor.getNome().equals(diretor1.getNome())){
                 throw new DiretorJaCadastradoException();
             }
         }
-        fakeDatabase.persisteDiretor(diretor);
+        Integer idGerado = diretores.size() + 1;
+        Diretor diretorASerGerado = new Diretor(idGerado, diretor.getNome(),diretor.getDataNascimento(),diretor.getAnoInicioAtividade());
+        fakeDatabase.persisteDiretor(diretorASerGerado);
     }
 
-    public List<DiretorRequest> listarDiretores(String name) throws DiretorNaoEncontradoExeption, NenhumDiretorEncontradoExeption {
-        List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
-        List<DiretorRequest> diretoresRetornar = new ArrayList<>();
+    public List<Diretor> listarDiretores(String name) throws DiretorNaoEncontradoExeption, NenhumDiretorEncontradoExeption {
+        List<Diretor> diretores = fakeDatabase.recuperaDiretores();
+        List<Diretor> diretoresRetornar = new ArrayList<>();
         if (isNull(name)) {
             if (diretores.size() == 0) {
                 throw new NenhumDiretorEncontradoExeption();
             } else return diretores;
         }
         if (nonNull(name)) {
-            for (DiretorRequest diretor : diretores) {
+            for (Diretor diretor : diretores) {
                 if (name.equals(diretor.getNome())) {
                     diretoresRetornar.add(diretor);
                 }
@@ -63,13 +66,13 @@ public class DiretorService {
         return diretoresRetornar;
     }
 
-    public DiretorRequest consultarDiretor(int id) throws IdNaoInformadoException, NenhumDiretorEncontradoComEsseIdExeption {
-        List<DiretorRequest> diretores = fakeDatabase.recuperaDiretores();
-        DiretorRequest diretorRetornar = null;
+    public Diretor consultarDiretor(int id) throws IdNaoInformadoException, NenhumDiretorEncontradoComEsseIdExeption {
+        List<Diretor> diretores = fakeDatabase.recuperaDiretores();
+        Diretor diretorRetornar = null;
         if (id < 1) {
             throw new IdNaoInformadoException();
         } else {
-            for (DiretorRequest diretor : diretores) {
+            for (Diretor diretor : diretores) {
                 if (id == diretor.getId()) {
                     diretorRetornar = diretor;
                 }

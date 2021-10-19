@@ -1,5 +1,6 @@
 package br.com.cwi.reset.rimacksena.service;
 
+import br.com.cwi.reset.rimacksena.Ator;
 import br.com.cwi.reset.rimacksena.FakeDatabase;
 import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
 import br.com.cwi.reset.rimacksena.exceptions.*;
@@ -22,7 +23,7 @@ public class AtorService {
 
     public void criarAtor(AtorRequest ator) throws CampoObrigatorioExeption, NomeESobrenomeException, DataNascimentoInvalidoException, DataInicioAtividadeInvalidaException, AtorJaCadastradoException {
         String regex = "[A-Z][a-z]* [A-Z][a-z]*";
-        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
+        List<Ator> atores = fakeDatabase.recuperaAtores();
         if (isNull(ator.getNome())){
             throw new CampoObrigatorioExeption();
         }if (isNull(ator.getDataNascimento())){
@@ -37,20 +38,22 @@ public class AtorService {
             throw new DataNascimentoInvalidoException();
         }if (ator.getDataNascimento().getYear() > ator.getAnoInicioAtividade()){
             throw new DataInicioAtividadeInvalidaException();
-        }for (AtorRequest ator1 : atores) {
+        }for (Ator ator1 : atores) {
             if (ator.getNome().equals(ator1.getNome())){
                 throw new AtorJaCadastradoException();
             }
         }
-        fakeDatabase.persisteAtor(ator);
+        Integer idGerado = atores.size() + 1;
+        Ator atorASerGerado = new Ator(idGerado, ator.getNome(), ator.getDataNascimento(), ator.getAnoInicioAtividade(), ator.getStatusCarreira());
+        fakeDatabase.persisteAtor(atorASerGerado);
     }
 
 
-    public List<AtorRequest> listarAtores(String name) throws NenhumAtorEncontradoExeption, AtorNaoEncontradoExeption {
-        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
-        List<AtorRequest> atoresRetornar = new ArrayList<>();
-        List<AtorRequest> atoresRetornarFiltro = new ArrayList<>();
-        for (AtorRequest ator : atores) {
+    public List<Ator> listarAtores(String name) throws NenhumAtorEncontradoExeption, AtorNaoEncontradoExeption {
+        List<Ator> atores = fakeDatabase.recuperaAtores();
+        List<Ator> atoresRetornar = new ArrayList<>();
+        List<Ator> atoresRetornarFiltro = new ArrayList<>();
+        for (Ator ator : atores) {
             if (ator.getStatusCarreira().equals(StatusAtividade.EM_ATIVIDADE)){
                 atoresRetornar.add(ator);
             }
@@ -59,7 +62,7 @@ public class AtorService {
                 throw new NenhumAtorEncontradoExeption();
             } else return atoresRetornar;
         }if (nonNull(name)) {
-            for (AtorRequest ator : atores) {
+            for (Ator ator : atores) {
                 if (name.equals(ator.getNome())) {
                     atoresRetornarFiltro.add(ator);
                 }
@@ -70,13 +73,13 @@ public class AtorService {
         return atoresRetornarFiltro;
     }
 
-    public AtorRequest consultarAtor(int id) throws IdNaoInformadoException, NenhumAtorEncontradoComEsseIdExeption {
-        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
-        AtorRequest atorRetornar = null;
+    public Ator consultarAtor(int id) throws IdNaoInformadoException, NenhumAtorEncontradoComEsseIdExeption {
+        List<Ator> atores = fakeDatabase.recuperaAtores();
+        Ator atorRetornar = null;
         if (id < 1) {
             throw new IdNaoInformadoException();
         } else {
-            for (AtorRequest ator : atores) {
+            for (Ator ator : atores) {
                 if (id == ator.getId()) {
                     atorRetornar = ator;
                 }
@@ -90,8 +93,8 @@ public class AtorService {
         }
     }
 
-    public List<AtorRequest> ConsultarAtores() throws NenhumAtorEncontradoExeption {
-        List<AtorRequest> atores = fakeDatabase.recuperaAtores();
+    public List<Ator> ConsultarAtores() throws NenhumAtorEncontradoExeption {
+        List<Ator> atores = fakeDatabase.recuperaAtores();
         if (atores.size() == 0){
             throw new NenhumAtorEncontradoExeption();
         }

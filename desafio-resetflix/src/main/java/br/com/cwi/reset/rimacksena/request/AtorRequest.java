@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class AtorRequest extends Pessoas {
 
-    private int id;
+
     private StatusAtividade statusCarreira;
     private FakeDatabase fakeDatabase;
 
@@ -16,11 +16,10 @@ public class AtorRequest extends Pessoas {
         super(nome, dataNascimento, anoInicioAtividade);
         this.statusCarreira = statusCarreira;
         this.fakeDatabase = fakeDatabase;
-        this.id = fakeDatabase.gerarIdAtor();
     }
 
-    public int getId() {
-        return id;
+    public FakeDatabase getFakeDatabase() {
+        return fakeDatabase;
     }
 
     public StatusAtividade getStatusCarreira() {
