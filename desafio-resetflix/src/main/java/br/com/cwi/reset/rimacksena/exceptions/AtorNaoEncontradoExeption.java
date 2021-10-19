@@ -1,6 +1,10 @@
 package br.com.cwi.reset.rimacksena.exceptions;
 
-public class AtorNaoEncontradoExeption extends Throwable {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class AtorNaoEncontradoExeption extends Exception {
 
     public AtorNaoEncontradoExeption() {
         super("Ator não encontrato com o filtro, favor informar outro filtro.");

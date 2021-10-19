@@ -1,6 +1,6 @@
 package br.com.cwi.reset.rimacksena.service;
 
-import br.com.cwi.reset.rimacksena.Ator;
+import br.com.cwi.reset.rimacksena.domain.Ator;
 import br.com.cwi.reset.rimacksena.FakeDatabase;
 import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
 import br.com.cwi.reset.rimacksena.exceptions.*;
@@ -63,7 +63,7 @@ public class AtorService {
             } else return atoresRetornar;
         }if (nonNull(name)) {
             for (Ator ator : atores) {
-                if (name.equals(ator.getNome())) {
+                if (name.equals(ator.getNome()) & ator.getStatusCarreira().equals(StatusAtividade.EM_ATIVIDADE)) {
                     atoresRetornarFiltro.add(ator);
                 }
             }
@@ -93,7 +93,7 @@ public class AtorService {
         }
     }
 
-    public List<Ator> ConsultarAtores() throws NenhumAtorEncontradoExeption {
+    public List<Ator> consultarAtores() throws NenhumAtorEncontradoExeption {
         List<Ator> atores = fakeDatabase.recuperaAtores();
         if (atores.size() == 0){
             throw new NenhumAtorEncontradoExeption();

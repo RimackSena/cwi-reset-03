@@ -1,6 +1,6 @@
 package br.com.cwi.reset.rimacksena.service;
 
-import br.com.cwi.reset.rimacksena.Diretor;
+import br.com.cwi.reset.rimacksena.domain.Diretor;
 import br.com.cwi.reset.rimacksena.FakeDatabase;
 import br.com.cwi.reset.rimacksena.exceptions.*;
 import br.com.cwi.reset.rimacksena.request.DiretorRequest;

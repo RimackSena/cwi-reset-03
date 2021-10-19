@@ -1,4 +1,4 @@
-package br.com.cwi.reset.rimacksena;
+package br.com.cwi.reset.rimacksena.domain;
 
 import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
 
