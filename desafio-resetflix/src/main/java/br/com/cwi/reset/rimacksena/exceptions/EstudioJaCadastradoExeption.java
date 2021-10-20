@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class EstudioJaCadastradoExeption extends Exception {
 
     public EstudioJaCadastradoExeption() {
-        super("Campo obrigatório não informado. Favor informar o campo");
+        super("Já existe um estúdio cadastrado para o nome");
     }
 }

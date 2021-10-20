@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DiretorNaoEncontradoExeption extends Exception{
 
     public DiretorNaoEncontradoExeption() {
-        super("Diretor não encontrato com o filtro, favor informar outro filtro.");
+        super("Diretor não encontrado com o filtro, favor informar outro filtro.");
     }
 
 }
