@@ -89,7 +89,6 @@ public class AtorService {
             } else {
                 throw new NenhumAtorEncontradoComEsseIdExeption();
             }
-
         }
     }
 

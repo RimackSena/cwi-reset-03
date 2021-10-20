@@ -37,7 +37,7 @@ public class AtorController {
     }
 
     @GetMapping("/{id}")
-    public Ator consultarAtor(@PathVariable int id) throws NenhumAtorEncontradoExeption, AtorNaoEncontradoExeption, IdNaoInformadoException, NenhumAtorEncontradoComEsseIdExeption {
+    public Ator consultarAtor(@PathVariable int id) throws IdNaoInformadoException, NenhumAtorEncontradoComEsseIdExeption {
         return this.atorService.consultarAtor(id);
     }
 }

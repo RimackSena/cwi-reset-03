@@ -4,10 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class CampoObrigatorioExeption extends Exception {
+public class NenhumEstudioEncontradoExeption extends Exception {
 
-    public CampoObrigatorioExeption() {
-        super("Já existe um estúdio cadastrado para o nome");
+    public NenhumEstudioEncontradoExeption() {
+        super("Nenhum estúdio cadastrado, favor cadastar estúdios.");
     }
-
 }

@@ -1,27 +1,21 @@
-package br.com.cwi.reset.rimacksena.domain;
+package br.com.cwi.reset.rimacksena.request;
 
 import br.com.cwi.reset.rimacksena.enuns.StatusAtividade;
 
 import java.time.LocalDate;
 
-public class Estudio {
+public class EstudioRequest {
 
-    private int id;
     private String nome;
     private String descricao;
     private LocalDate dataCriacao;
     private StatusAtividade statusAtividade;
 
-    public Estudio(int id, String nome, String descricao, LocalDate dataCriacao, StatusAtividade statusAtividade) {
+    public EstudioRequest(String nome, String descricao, LocalDate dataCriacao, StatusAtividade statusAtividade) {
         this.nome = nome;
         this.descricao = descricao;
         this.dataCriacao = dataCriacao;
         this.statusAtividade = statusAtividade;
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNome() {
