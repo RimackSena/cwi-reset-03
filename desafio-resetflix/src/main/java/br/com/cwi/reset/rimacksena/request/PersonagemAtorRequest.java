@@ -9,8 +9,8 @@ import br.com.cwi.reset.rimacksena.service.AtorService;
 
 public class PersonagemAtorRequest {
 
-    private String nome;
     private Ator ator;
+    private String nome;
     private String descricaoPersonagem;
     private TipoAtuacao tipoAtuacao;
     private FakeDatabase fakeDatabase;

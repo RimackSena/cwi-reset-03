@@ -11,6 +11,7 @@ import br.com.cwi.reset.rimacksena.exceptions.NenhumEstudioEncontradoComEsseIdEx
 import br.com.cwi.reset.rimacksena.service.DiretorService;
 import br.com.cwi.reset.rimacksena.service.EstudioService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmeRequest {
@@ -20,12 +21,12 @@ public class FilmeRequest {
     private String capaFilme; //nao sei que tipo de variavel vai ser aqui
     private Diretor diretor;
     private Estudio estudio;
-    private List<PersonagemAtorRequest> personagem;
-    private List<Genero> generos;
+    private List<PersonagemAtorRequest> personagem = new ArrayList<>();
+    private List<Genero> generos = new ArrayList<>();
     private String resumo;
     private FakeDatabase fakeDatabase;
 
-    public FilmeRequest(String nome, int anoLancamento, String capaFilme, int idDiretor, int  idEstudio,  PersonagemAtorRequest personagem, Genero generos,
+    public FilmeRequest(String nome, int anoLancamento, String capaFilme, int idDiretor, int  idEstudio,  PersonagemAtorRequest personagemAdicinar, Genero generos,
                  String resumo) throws IdNaoInformadoException, NenhumDiretorEncontradoComEsseIdExeption, NenhumEstudioEncontradoComEsseIdExeption {
         this.fakeDatabase = FakeDatabase.getInstance();
         this.nome = nome;
@@ -33,7 +34,7 @@ public class FilmeRequest {
         this.capaFilme = capaFilme;
         this.diretor = new DiretorService(fakeDatabase).consultarDiretor(idDiretor);
         this.estudio = new EstudioService(fakeDatabase).consultarEstudio(idEstudio);
-        this.personagem.add(personagem);
+        this.personagem.add(personagemAdicinar);
         this.generos.add(generos);
         this.resumo = resumo;
     }

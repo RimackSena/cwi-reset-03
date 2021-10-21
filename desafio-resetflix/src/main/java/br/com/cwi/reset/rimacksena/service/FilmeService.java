@@ -61,15 +61,14 @@ public class FilmeService {
             }else return filmes;
         }if (nonNull(nomeFilme) | nonNull(nomeDiretor) | nonNull(nomePersonagem) | nonNull(nomeAtor)){
             for (Filme filme : filmes){
-                if (filme.getNome().equals(nomeFilme) | filme.getDiretor().getNome().equals(nomeDiretor) | filme.getPersonagem().stream()
+                if (filme.getNome().matches(nomeFilme) | filme.getDiretor().getNome().equals(nomeDiretor) | filme.getPersonagem().stream()
                         .filter(p -> p.getNome().equals(nomePersonagem)).findFirst().isPresent() | filme.getPersonagem().stream()
                         .filter(p -> p.getAtor().getNome().equals(nomeAtor)).findFirst().isPresent()){
                     filmesFiltro.add(filme);
-                }if (filmesFiltro.size() == 0){
-                    throw new NenhumFilmeParaOsFiltrosException();
                 }
-                return filmesFiltro;
-            }
+            }if (filmesFiltro.size() == 0){
+                throw new NenhumFilmeParaOsFiltrosException();
+            }return filmesFiltro;
         }return filmes;
     }
 
@@ -88,8 +87,9 @@ public class FilmeService {
             }
         }for (PersonagemAtor pers: personagens) {
             for (PersonagemAtorRequest pers2 : filme.getPersonagem()){
-               if(pers2.getAtor().getId() == pers.getAtor().getId() & pers.equals(pers2));
-               throw new MesmoPersonagemComMesmoAtorException();
+               if(pers2.getNome().equals(pers.getNome()) & pers2.getAtor().getId() == pers.getAtor().getId()) {
+                   throw new MesmoPersonagemComMesmoAtorException();
+               }
             }
         }perdonagensParaCriar = filme.getPersonagem();
         return perdonagensParaCriar;
@@ -99,11 +99,11 @@ public class FilmeService {
         if (filme.getGeneros().size() == 0){
             throw new NenhumGeneroImformadoException();
         }
-        for (Genero genero : filme.getGeneros()) {
-            if (genero.equals(genero)){
-                throw new MesmoGeneroNaListaException();
-            }
-        }
+//        for (Genero genero : filme.getGeneros()) {
+//            if (filme.getGeneros().contains(genero)){
+//                throw new MesmoGeneroNaListaException();
+//            }
+//        }
         return false;
     }
 }
